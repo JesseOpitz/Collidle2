@@ -1,0 +1,107 @@
+/* index.css */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Custom scrollbar hide */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Animated background stars */
+.stars, .stars2, .stars3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}
+
+.stars {
+  background-image: radial-gradient(2px 2px at 20px 30px, white, transparent),
+                    radial-gradient(2px 2px at 40px 70px, white, transparent),
+                    radial-gradient(1px 1px at 50px 160px, white, transparent),
+                    radial-gradient(1px 1px at 130px 40px, white, transparent);
+  background-size: 200px 200px;
+  animation: zoom 10s ease-in-out infinite;
+  opacity: 0.3;
+}
+
+.stars2 {
+  background-image: radial-gradient(3px 3px at 150px 100px, white, transparent),
+                    radial-gradient(2px 2px at 80px 180px, white, transparent),
+                    radial-gradient(1px 1px at 170px 50px, white, transparent);
+  background-size: 300px 300px;
+  animation: zoom 15s ease-in-out infinite;
+  opacity: 0.2;
+}
+
+.stars3 {
+  background-image: radial-gradient(1px 1px at 10px 10px, white, transparent),
+                    radial-gradient(1px 1px at 190px 190px, white, transparent);
+  background-size: 250px 250px;
+  animation: zoom 20s ease-in-out infinite;
+  opacity: 0.1;
+}
+
+@keyframes zoom {
+  0% { transform: scale(1) translateX(0); }
+  50% { transform: scale(1.2) translateX(-20px); }
+  100% { transform: scale(1) translateX(0); }
+}
+
+/* Custom animations */
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+/* Prevent text selection on game elements */
+.select-none {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Ensure full height on mobile */
+html, body, #root {
+  height: 100%;
+  overflow: hidden;
+  touch-action: none;
+}
+
+/* Smooth spring transitions */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Performance optimizations */
+.will-change-transform {
+  will-change: transform;
+}
+
+.gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
